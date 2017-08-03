@@ -26,7 +26,7 @@ namespace CsenPoomsaeScore.UserControls
                 Competition.MyCompetition.SetJudgeNumber(Int32.Parse(cmbJudgeNumber.Text));
 
                 //Shows next page
-                TransitionController.MyTransitionController.ShowUserControlPage(new MainControl(), WpfPageTransitions.PageTransitionType.Fade);
+                TransitionController.MyTransitionController.ShowUserControlPage(new JudgeAssocControl(), WpfPageTransitions.PageTransitionType.Fade);
             }
         }
     }

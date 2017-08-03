@@ -114,11 +114,17 @@
     <Compile Include="UserControls\AthleteDoneControl.xaml.cs">
       <DependentUpon>AthleteDoneControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Custom\JudgeAssoc.xaml.cs">
+      <DependentUpon>JudgeAssoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\DeleteInfoControl.xaml.cs">
       <DependentUpon>DeleteInfoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\InitializeControl.xaml.cs">
       <DependentUpon>InitializeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\JudgeAssocControl.xaml.cs">
+      <DependentUpon>JudgeAssocControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\JudgePointsControl.xaml.cs">
       <DependentUpon>JudgePointsControl.xaml</DependentUpon>
@@ -164,11 +170,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Custom\JudgeAssoc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\DeleteInfoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\InitializeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\JudgeAssocControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -519,7 +533,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 e x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
