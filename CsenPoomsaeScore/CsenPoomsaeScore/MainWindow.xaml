@@ -1,0 +1,14 @@
+﻿<Window x:Class="CsenPoomsaeScore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CsenPoomsaeScore"
+        xmlns:pageTransition="clr-namespace:WpfPageTransitions;assembly=WpfPageTransitions"
+        mc:Ignorable="d"
+        Title="Csen Poomsae Score" MinHeight="650" MinWidth="750" Height="750" Width="1000" Icon="Images/csenIcon.ico"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Grid Style="{StaticResource MainWindowStyle}">
+        <pageTransition:PageTransition Name="pageTransitionControl"/>
+    </Grid>
+</Window>

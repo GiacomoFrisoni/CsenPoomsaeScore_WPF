@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="CsenPoomsaeScore.UserControls.MainControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CsenPoomsaeScore.UserControls"
+             xmlns:c="clr-namespace:CsenPoomsaeScore.Classes"
+             xmlns:pageTransition="clr-namespace:WpfPageTransitions;assembly=WpfPageTransitions"
+             mc:Ignorable="d"
+             d:DesignHeight="500" d:DesignWidth="700" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <c:StatusToColor x:Key="MyConverter"/>
+    </UserControl.Resources>
+
+    <Grid Style="{StaticResource MainWindowStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="{StaticResource BackgroundLightColor}">
+            <Grid.Effect>
+                <DropShadowEffect></DropShadowEffect>
+            </Grid.Effect>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Name="grdFilter" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5, 5, 5, 0" Text="Categoria" Style="{StaticResource TextBlockStyle}"/>
+                <ComboBox Name="cmbCategory" Grid.Row="1" Grid.Column="0" Margin="5, 0, 5, 5" Style="{StaticResource UnEmptyComboBoxStyle}"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" Margin="5, 5, 5, 0"  Text="Sesso" Style="{StaticResource TextBlockStyle}"/>
+                <ComboBox Name="cmbGender" Grid.Row="1" Grid.Column="1" Margin="5, 0, 5, 5" Style="{StaticResource UnEmptyComboBoxStyle}"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Grado" Margin="5, 5, 5, 0"  Style="{StaticResource TextBlockStyle}"/>
+                <ComboBox Name="cmbGrade" Grid.Row="3" Grid.Column="0" Margin="5, 0, 5, 5" Style="{StaticResource UnEmptyComboBoxStyle}"/>
+
+                <Button Grid.Row="3" Grid.Column="1" Name="btnConfirm" Margin="5, 0, 5, 5" Content="OK" Style="{StaticResource AddButtonStyle}" FontSize="16" Click="btnConfirm_Click">
+                    <Button.Effect>
+                        <DropShadowEffect ShadowDepth="1"></DropShadowEffect>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Border Visibility="Collapsed" Name="brdEmptyList" BorderBrush="{StaticResource BackgroundColor}" BorderThickness="0, 1, 0, 0">
+                    <TextBlock Margin="10, 5" Text="Nessun atleta da visualizzare" Style="{StaticResource TextBlockStyle}"></TextBlock>
+                </Border>
+
+                <ListView Name="lsvData" Grid.Row="1" Background="Transparent" BorderBrush="{StaticResource BackgroundColor}" PreviewMouseLeftButtonUp="lsvData_PreviewMouseLeftButtonUp"  BorderThickness="0" Margin="0, 10, 0, -5">
+                    <ListView.Effect>
+                        <DropShadowEffect Direction="90" Opacity="0.2"></DropShadowEffect>
+                    </ListView.Effect>
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <!-- Trun off default selection-->
+                                    <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                        <Grid Name="grdContainer" Background="{StaticResource BackgroundLightColor}">
+                                            <Border Margin="15, 0" BorderBrush="{StaticResource GrayColor}" BorderThickness="0, 0, 0, 1">
+                                                <Grid Margin="0, 10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition></ColumnDefinition>
+                                                        <ColumnDefinition Width="65"></ColumnDefinition>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackPanel Margin="0, 0, 5, 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                                        <Ellipse Name="elpStatus" Fill="{Binding HasFinished, Converter={StaticResource MyConverter}}" Width="10" Height="10" Margin="5, 0, 10, 0"></Ellipse>
+
+                                                        <TextBlock Name="txblRef" TextWrapping="Wrap" VerticalAlignment="Center">
+                                                                <Run Text="{Binding Name}" Foreground="White" FontSize="14"/>
+                                                                <Run Text="{Binding Surname}" Foreground="White" FontSize="14"/>
+                                                        </TextBlock>
+                                                    </StackPanel>
+
+                                                    <TextBlock Grid.Column="1" Name="txblPoints" VerticalAlignment="Center" Foreground="White" FontSize="14" HorizontalAlignment="Right" Margin="0, 0, 5, 0">
+                                                        <Run Text="{Binding TotalScore}" Foreground="White" FontSize="14"/>
+                                                        <Run Text=" [" Foreground="White" FontSize="14"/>
+                                                        <Run Text="{Binding Round}" Foreground="White" FontSize="14"/>
+                                                        <Run Text="]" Foreground="White" FontSize="14"/>
+                                                    </TextBlock>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter TargetName="grdContainer" Property="Background" Value="{StaticResource BackgroundSelectColor}" />
+                                            </Trigger>
+
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsMouseOver" Value="true" />
+                                                    <Condition Property="IsSelected" Value="false" />
+                                                </MultiTrigger.Conditions>
+                                                <MultiTrigger.Setters>
+                                                    <Setter TargetName="grdContainer" Property="Background" Value="{StaticResource BackgroundOnMouseColor}" />
+                                                </MultiTrigger.Setters>
+                                            </MultiTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.Resources>
+                </ListView>
+            </Grid>
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75*"></ColumnDefinition>
+                    <ColumnDefinition Width="25*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Name="btnAdd" Grid.Column="0" Style="{StaticResource AddButtonStyle}" Click="btnAdd_Click"/>
+                <Button Name="btnRemove" Grid.Column="1" Style="{StaticResource RemoveButtonStyle}" Click="btnRemove_Click"/>
+            </Grid>
+        </Grid>
+
+
+        <!--PageTransition-->
+        <pageTransition:PageTransition Name="pageTransitionControl" Grid.Column="1"/>
+
+
+        <!--Menu-->
+        <!--
+        <TreeView Name="tvData" Grid.Column="0" Padding="0,10,0,0" Background="{x:Null}">
+            <TreeView.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Border Background="#FF4B4B4B" Margin="-1">
+                                    <Border Height="25" Margin="5" Width="150" Background="{StaticResource ButtonClickBackground}" BorderThickness="0">
+                                        <TextBlock Text="{Binding}" FontSize="14" Foreground="White" TextAlignment="Left" Padding="8, 2, 0, 0"/>
+                                    </Border>
+                                </Border>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="ItemTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Margin="2" Orientation="Horizontal">
+                                    <Ellipse Name="elpStatus" Fill="{Binding HasFinished, Converter={StaticResource MyConverter}}"  Width="10" Height="10" Margin="0, 0, 5, 0"></Ellipse>
+
+                                    <TextBlock Name="txblRef" MaxWidth="180" TextWrapping="Wrap" VerticalAlignment="Center">
+                                        <Run Text="{Binding Id}" Foreground="White" FontSize="14"/>
+                                        <Run Text="|" Foreground="White" FontSize="14"/>
+                                        <Run Text="{Binding Name}" Foreground="White" FontSize="14"/>
+                                        <Run Text="{Binding Surname}" Foreground="White" FontSize="14"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <EventSetter Event="MouseLeftButtonUp" Handler="treeViewItem_MouseLeftButtonUp"/>
+                </Style>
+            </TreeView.Resources>
+        </TreeView>-->
+    </Grid>
+</UserControl>

@@ -1,0 +1,115 @@
+﻿<Window x:Class="CsenPoomsaeScore.ScoreWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CsenPoomsaeScore"
+        mc:Ignorable="d"
+        Title="Tabellone" WindowStartupLocation="CenterScreen" Height="800" Width="1125"
+        Icon="Images/csenIcon.ico">
+    <Grid x:Name="grdDataTable" Style="{StaticResource MainWindowStyle}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="80*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="{StaticResource BackgroundLightColor}">
+            <Viewbox Grid.Row="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal" Margin="10, 10, 50, 5">
+                        <Image Name="imgNationality" Width="20" Height="20" Margin="5"></Image>
+                        <TextBlock Name="txblAthleteName" Text="Mario Giovanni Rossi" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" VerticalAlignment="Center" Margin="0, -7, 0, 0"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="10, 10, 10, 5" HorizontalAlignment="Right">
+                        <TextBlock Name="txblGym" Text="Cicci e Cicca - La Stella" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right" FontSize="10" Margin="0"></TextBlock>
+                        <TextBlock Name="txblTime" Text="18:53:265" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Right" FontSize="15" Margin="0"></TextBlock>
+                    </StackPanel>
+                </Grid>
+            </Viewbox>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0, 2, 0, 0" Background="{StaticResource BackgroundLightColor}">
+            <Viewbox>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Name="txblCategory" Grid.Column="0" Text="Categoria principale" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Name="txblGender" Grid.Column="1" Text="M" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Name="txblGrade" Grid.Column="2" Text="Grado" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+            </Viewbox>
+        </Grid>
+
+        <Viewbox Name="vbTotal" Grid.Row="2">
+            <TextBlock Name="txblTotal" Text="8.0" Style="{StaticResource TextBlockBigTitleStyle}" FontSize="25" Margin="0, -5, 0, 0"></TextBlock>
+        </Viewbox>
+        <Viewbox Name="vbAthleteNameCenter" Grid.Row="2">
+            <TextBlock Name="txblAthleteNameCenter" Text="Mario Giovanni Rossi" Style="{StaticResource TextBlockTitleStyle}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="40"></TextBlock>
+        </Viewbox>
+
+        <Grid Grid.Row="3" Background="{StaticResource BackgroundLightColor}">
+            <Viewbox>
+                <StackPanel Name="stpJudgesPoints"  Grid.Row="2" Orientation="Horizontal">
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 1" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 2" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 3" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 4" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 5" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 6" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Margin="25, 15">
+                        <TextBlock Text="Giudice 7" Style="{StaticResource TextBlockTitleStyle}" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                        <TextBlock Text="8.0" Style="{StaticResource TextBlockTitleStyle}" HorizontalAlignment="Center" FontSize="25"></TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+
+
+        <Grid Grid.Row="4" Background="White">
+            <Viewbox>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Images\Logos\csen_logo.png" Width="110" Margin="50, 10"></Image>
+                    <Image Source="Images\Logos\testo.png" Margin="50, 0"></Image>
+                    <Image Source="Images\Logos\taekw_logo.png" Width="110" Height="110" Margin="50, 0"></Image>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Window>
